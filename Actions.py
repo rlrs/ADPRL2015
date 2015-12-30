@@ -1,44 +1,32 @@
+from State import State
+import numpy as np
+import operator
+
 class Action(object):
     def __init__(self):
-        pass
+        self.delta = (0, 0)
         
-    def is_wall(self, state, dy, dx):
-        return state.map[state.pos[0]+dy, state.pos[1]+dx]
         
     def do(self, state):
-        pass
-        
+        return State(tuple(map(operator.add, state.pos, self.delta)))
+
+
 class Up(Action):
-    def do(self, state):
-        if self.is_wall(state, -1, 0):
-            return state
-        else:
-            state.pos[0] -= 1
-            return state
+    def __init__(self):
+        self.delta = (-1, 0)
+
         
 class Down(Action):
-    def do(self, state):
-        if self.is_wall(state, 1, 0):
-            return state
-        else:
-            state.pos[0] += 1
-            return state
+    def __init__(self):
+        self.delta = (1, 0)
         
         
 class Left(Action):
-    def do(self, state):
-        if self.is_wall(state, 0, -1):
-            return state
-        else:
-            state.pos[1] -= 1
-            return state
+    def __init__(self):
+        self.delta = (0, -1)
         
         
 class Right(Action):
-    def do(self, state):
-        if self.is_wall(state, 0, 1):
-            return state
-        else:
-            state.pos[1] += 1
-            return state
+    def __init__(self):
+        self.delta = (0, 1)
         

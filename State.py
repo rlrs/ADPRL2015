@@ -1,15 +1,7 @@
 import numpy as np
 
 class State(object):
-    def __init__(self, pos, goal):
-        # The map is defined as a (fixed) part of the state, for simplicity
-        self.map = np.matrix('1 1 1 1 1 1 1 1; \
-                              1 0 1 0 1 0 0 1; \
-                              1 0 1 0 1 1 0 1; \
-                              1 0 1 0 0 0 0 1; \
-                              1 0 0 0 1 0 0 1; \
-                              1 0 1 1 1 1 1 1; \
-                              1 0 0 0 0 0 0 1; \
-                              1 1 1 1 1 1 1 1')
+    def __init__(self, pos):
+        """ Agent position is Markov state.
+            No artificial end state because it's handled in the Agent code """
         self.pos = pos
-        self.goal = goal
